@@ -1,0 +1,26 @@
+.sidebarBlock{
+  background-color: lightblue;
+}
+
+.nav {
+    grid-area: side-bar;
+    
+}
+
+.nav ul li{
+  list-style: none;
+}
+
+.nav ul li:last-child{
+  margin-top: 20px;
+}
+
+.navlink{
+  color: white;
+}
+
+.navlink_active{
+  color: gold;
+}
+
+

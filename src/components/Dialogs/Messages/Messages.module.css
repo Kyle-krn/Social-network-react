@@ -1,0 +1,28 @@
+.messages{
+    display: flex;
+    flex-direction: column;
+}
+
+.messages__items{
+    flex-grow: 1;
+    padding: 30px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    align-content: stretch;
+}
+
+.messages__item.my__message{
+    text-align: right;
+}
+
+.sendMessageBlock{
+    display: flex;
+}
+
+.sendMessageBlock textarea {
+    width: 90%;
+    resize: none;
+    
+}

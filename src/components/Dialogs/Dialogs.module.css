@@ -1,0 +1,7 @@
+.dialogs__content{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 93vh;
+}
+
+

@@ -1,0 +1,18 @@
+.dialogs{
+    border-right: 2px solid black;
+}
+
+.dialogs__items{
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+}
+
+.dialogs__item a {
+    color: black;
+}
+
+.dialogs__item a.active{
+    color: gold;
+}
