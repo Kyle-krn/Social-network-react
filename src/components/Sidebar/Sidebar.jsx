@@ -1,21 +1,20 @@
 import style from  './Sidebar.module.css';
 import {NavLink} from "react-router-dom";
 import Friends from './Friends/Friends';
+import StoreContext from '../../storeContext';
 
 const Sidebar = (props) => {
-    // debugger;
+    let links = [['profile', 'Profile'], ['dialogs', 'Messages'], ['news', 'News'], ['music', 'Music'], ['settings', 'Settings']]
     return (
         <div className={style.sidebarBlock}>
             <nav className={style.nav}>
                 <ul>
-                    <li><NavLink className={navData => navData.isActive? style.navlink_active:style.navlink} to="/profile">Profile</NavLink></li>
-                    <li><NavLink className={navData => navData.isActive? style.navlink_active:style.navlink} to="/dialogs">Messages</NavLink></li>
-                    <li><NavLink className={navData => navData.isActive? style.navlink_active:style.navlink} to="/news">News</NavLink></li>
-                    <li><NavLink className={navData => navData.isActive? style.navlink_active:style.navlink} to="/music">Music</NavLink></li>
-                    <li><NavLink className={navData => navData.isActive? style.navlink_active:style.navlink} to="/settings">Settings</NavLink></li>
+                    {links.map((el) => (<li><NavLink className={navData => navData.isActive? style.navlink_active:style.navlink} to={'/' + el[0]}>{el[1]}</NavLink></li>))}
                 </ul>
             </nav>
-            <Friends FriendsData={props.SidebarData.FriendsData}/>
+            <StoreContext.Consumer>{
+                (store) => (<Friends FriendsData={store.getState().sidebarPage.FriendsData}/>)
+            }</StoreContext.Consumer>
         </div>
     );
 }
