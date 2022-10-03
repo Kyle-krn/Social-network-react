@@ -4,11 +4,11 @@ const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
 export const sendMessageActionCreator = (senderId) => ({type: SEND_MESSAGE, senderId: senderId})
 export const onMessageChangeActionCreator = (message) => ({type: UPDATE_NEW_MESSAGE, message: message})
 
-const dialogsReducer = (state, action) => {
+const dialogsReducer = (state = {DialogsData: [], MessagesData: [], newMessageText: ''}, action) => {
     switch(action.type) {
         case SEND_MESSAGE:
             let newMessage = {
-              id: state.MessagesData[state.MessagesData.length -1].id + 1,
+              id: 1,
               senderId: action.senderId,
               message: state.newMessageText
             };

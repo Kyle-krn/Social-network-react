@@ -1,6 +1,5 @@
 import style from './Messages.module.css';
 import React from 'react';
-import { onMessageChangeActionCreator, sendMessageActionCreator } from '../../../redux/dialogsReducer';
 
 
 const Message = (props) => {
@@ -10,9 +9,10 @@ const Message = (props) => {
 }
 
 const Messages = (props) => {
+
     let TextAreaRef = React.createRef(); 
-    let ClickButton = () => props.dispatch(sendMessageActionCreator(1))
-    const onMessageChange = () => props.dispatch(onMessageChangeActionCreator(TextAreaRef.current.value));
+    let onSendMessage = () => props.SendMessage(1)
+    const onChangeMessage = () => props.ChangeMessage(TextAreaRef.current.value);
 
     return (
         <div className={style.messages}>
@@ -20,8 +20,8 @@ const Messages = (props) => {
                 {props.MessagesData.map(el => <Message key={el.id} messageId={el.id} userId={el.senderId} message={el.message}/>)}
             </div>
             <div className={style.sendMessageBlock}>
-                <textarea onChange={onMessageChange} ref={TextAreaRef} value={props.MessageTextInput} />
-                <button onClick={ClickButton}>Send</button>
+                <textarea onChange={onChangeMessage} ref={TextAreaRef} value={props.MessageTextInput} />
+                <button onClick={onSendMessage}>Send</button>
             </div>
         </div>
     )

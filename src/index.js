@@ -3,24 +3,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { Store } from './redux/state';
+import store from './redux/reduxStore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let rerenderEntrieTree = (state) => {
     root.render(
         <React.StrictMode>
-            <App state={state} 
-                dispatch={Store.dispatch.bind(Store)}/>
+            <App state={state}
+                 dispatch={store.dispatch.bind(store)}
+                 store={store}/>
         </React.StrictMode>
     );
 }
+rerenderEntrieTree(store.getState());
 
-rerenderEntrieTree(Store.getState());
-// debugger;
 
 // subscribe(rerenderEntrieTree);
-Store.subscribe(rerenderEntrieTree)
+store.subscribe(() => {
+    let state = store.getState();
+    rerenderEntrieTree(state);
+})
 
 
 

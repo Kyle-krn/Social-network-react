@@ -10,8 +10,6 @@ const DialogItem = (props) => {
 }
 
 const DialogsList = (props) => {
-
-    
     return (
         <div className={style.dialogs}>
             <div className={style.dialogs__items}>
