@@ -9,8 +9,7 @@ const Friend = (props) => {
     )
 }
 
-const Friends = (props) => {
-    // debugger;
+const FriendsBLock = (props) => {
     return (
         <div className={style.friends}>
             <div className={style.friends__title}>Friends</div>
@@ -21,4 +20,4 @@ const Friends = (props) => {
     )
 }
 
-export default Friends;
+export default FriendsBLock;

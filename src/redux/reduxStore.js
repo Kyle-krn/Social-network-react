@@ -1,7 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
-import dialogsReducer from "./dialogsReducer"
-import profileReducer from "./profileReducer"
-import sidebarReducer from "./sidebarReducer"
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import sidebarReducer from "./sidebarReducer";
 
 let store = configureStore({
     reducer: {
@@ -11,5 +11,6 @@ let store = configureStore({
     }
 });
 
+window.store = store;
 
 export default store;

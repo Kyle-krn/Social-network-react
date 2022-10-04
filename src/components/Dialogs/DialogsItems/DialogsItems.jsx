@@ -1,7 +1,5 @@
 import style from './DialogsItems.module.css';
 import {NavLink} from "react-router-dom";
-import StoreContext from '../../../storeContext';
-
 
 
 const DialogsItems = (props) => {
@@ -17,12 +15,5 @@ const DialogsItems = (props) => {
     )
 }
 
-const DialogsItemsContainer = () => {
-    return (
-        <StoreContext.Consumer>{
-            (store) => (<DialogsItems DialogsData={store.getState().dialogsPage.DialogsData}/>)
-        }</StoreContext.Consumer>
-    )
-}
 
-export default DialogsItemsContainer;
+export default DialogsItems;
