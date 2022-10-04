@@ -1,6 +1,8 @@
 import style from './MyPosts.module.css'
 import Post from './Post/Post';
 import React from 'react';
+import {addPostActionCreator, onPostChangeActionCreator} from './../../../redux/profileReducer'
+import {connect} from 'react-redux';
 
 const MyPosts = (props) => {
     let newPostElement = React.createRef();
@@ -26,4 +28,20 @@ const MyPosts = (props) => {
     );
 }
 
-export default MyPosts;
+
+let mapStateToProps = (state) => {
+    return {
+        newPostText: state.profilePage.newPostText,
+        PostsData: state.profilePage.PostsData
+    }
+}
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewPostText: (text) => {dispatch(onPostChangeActionCreator(text))},
+        addPost: () => {dispatch(addPostActionCreator())}
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyPosts);

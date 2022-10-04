@@ -1,5 +1,6 @@
 import style from './DialogsItems.module.css';
 import {NavLink} from "react-router-dom";
+import {connect} from 'react-redux';
 
 
 const DialogsItems = (props) => {
@@ -16,4 +17,15 @@ const DialogsItems = (props) => {
 }
 
 
-export default DialogsItems;
+let mapStateToProps = (state) => {
+    return {
+        DialogsData: state.dialogsPage.DialogsData,
+    }
+};
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DialogsItems);

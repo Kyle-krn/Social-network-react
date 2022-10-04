@@ -7,6 +7,8 @@ import Sidebar from './components/Sidebar/Sidebar';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import UsersContainer from './components/Users/UsersContainer';
+
 import {
   BrowserRouter,
   Routes,
@@ -25,6 +27,9 @@ const App = (props) => {
             <Route path='/dialogs/*' element={<Dialogs />}/>
             <Route path='/news' element={<News />}/>
             <Route path='/music' element={<Music />}/>
+            
+            <Route path='/users' element={<UsersContainer />}/>
+
             <Route path='/settings' element={<Settings />}/>
           </Routes>
         </div>

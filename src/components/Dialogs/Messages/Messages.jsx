@@ -1,6 +1,7 @@
 import style from './Messages.module.css';
 import React from 'react';
-
+import { onMessageChangeActionCreator, sendMessageActionCreator } from '../../../redux/dialogsReducer';
+import {connect} from 'react-redux';
 
 const Message = (props) => {
     return (
@@ -27,4 +28,19 @@ const Messages = (props) => {
     )
 }
 
-export default Messages;
+
+let mapStateToProps = (state) => {
+    return {
+        MessagesData: state.dialogsPage.MessagesData,
+        MessageTextInput: state.dialogsPage.newMessageText
+    }
+};
+
+let mapDispatchToProps = (dispatch) => {
+    return {
+        SendMessage: (senderId) => {dispatch(sendMessageActionCreator(senderId))},
+        ChangeMessage: (text) => {dispatch(onMessageChangeActionCreator(text))}
+    }
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Messages);

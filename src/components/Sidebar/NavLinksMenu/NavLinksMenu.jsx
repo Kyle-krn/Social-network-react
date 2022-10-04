@@ -2,7 +2,7 @@ import style from  './NavLinksMenu.module.css';
 import {NavLink} from "react-router-dom";
 
 const NavLinksMenu = (props) => {
-    let links = [['profile', 'Profile'], ['dialogs', 'Messages'], ['news', 'News'], ['music', 'Music'], ['settings', 'Settings']]
+    let links = [['profile', 'Profile'], ['dialogs', 'Messages'], ['news', 'News'], ['music', 'Music'], ['users', 'Find users'] ,['settings', 'Settings']]
     return (
         <nav className={style.nav}>
             <ul>

@@ -6,7 +6,7 @@ body, html {
   display: grid;
   grid-template-areas: "header header"
                        "side-bar content";
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 60px minmax(93vh, 1fr);
   grid-template-columns: 2fr 10fr;
   max-width: 1200px;
   margin: 0 auto;
@@ -21,3 +21,6 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+}
