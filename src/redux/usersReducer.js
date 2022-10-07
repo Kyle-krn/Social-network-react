@@ -1,101 +1,32 @@
 const TOGGLE_FOLLOW_USER = 'TOGGLE_FOLLOW-USER';
 const SHOW_MORE_USERS = 'SHOW-MORE-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 
-let initialState = {users: 
-                    [
-                        {id: 1, 
-                         is_follow: false,
-                         name : {
-                           first: 'Dmitry', 
-                           last: 'Koval'
-                         },
-                         place: {
-                           country: 'Russia',
-                           city: 'Moscow'
-                         },
-                         status: 'It\'s about me',
-                         male: true
-                         },
-                         {id: 2, 
-                           is_follow: true,
-                           name : {
-                             first: 'Mila', 
-                             last: 'Love'
-                           },
-                           place: {
-                             country: 'Russia',
-                             city: 'Anapa'
-                           },
-                           status: 'It\'s about me',
-                           male: false
-                           },
-                         {id: 3, 
-                           is_follow: false,
-                           name : {
-                             first: 'Viltorya', 
-                             last: 'Paple'
-                           },
-                           place: {
-                             country: 'Russia',
-                             city: 'Krasnodar'
-                           },
-                           status: 'It\'s about me',
-                           male: false
-                           }
-                    ]
-                   }
+let initialState = {
+    users: [],
+    pageSize: 3,
+    totalUsersCount: 0,
+    currentPage: 1,
+    isFetching: false
+}
 
 
-export const toggleFollowAC = (userId) => ({type: TOGGLE_FOLLOW_USER, userId: userId})
-export const showMoreUsersAC = () => ({type: SHOW_MORE_USERS, users:                     [
-  {id: 1, 
-   is_follow: false,
-   name : {
-     first: 'Dmitry', 
-     last: 'Koval'
-   },
-   place: {
-     country: 'Russia',
-     city: 'Moscow'
-   },
-   status: 'It\'s about me',
-   male: true
-   },
-   {id: 2, 
-     is_follow: true,
-     name : {
-       first: 'Mila', 
-       last: 'Love'
-     },
-     place: {
-       country: 'Russia',
-       city: 'Anapa'
-     },
-     status: 'It\'s about me',
-     male: false
-     },
-   {id: 3, 
-     is_follow: false,
-     name : {
-       first: 'Viltorya', 
-       last: 'Paple'
-     },
-     place: {
-       country: 'Russia',
-       city: 'Krasnodar'
-     },
-     status: 'It\'s about me',
-     male: false
-     }
-]})
+export const toggleFollow = (userId) => ({type: TOGGLE_FOLLOW_USER, userId});
+export const setUsers = (users) => ({type: SHOW_MORE_USERS, users});
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
+export const toggleIsFetching = () => ({type: TOGGLE_IS_FETCHING});
+
 
 const UsersReducer = (state = initialState, action) => {
     switch (action.type){
         case SHOW_MORE_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: [...action.users]
             }
         case TOGGLE_FOLLOW_USER:
             return {
@@ -107,6 +38,21 @@ const UsersReducer = (state = initialState, action) => {
                         return u
                     }
                 })
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state,
+                totalUsersCount: action.totalUsersCount
+            }
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: !state.isFetching
             }
         default:
             return state
